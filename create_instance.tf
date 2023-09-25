@@ -16,7 +16,7 @@ resource "oci_core_instance" "ubuntu_instance" {
         subnet_id = "<subnet-ocid>"
     }
     metadata = {
-        ssh_authorized_keys = file("<ssh-public-key-path>")
+        ssh_authorized_keys = file("/home/tjs/Documents/repo/terraform/public.pem")
     } 
     preserve_boot_volume = false
 }
