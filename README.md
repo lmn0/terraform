@@ -41,3 +41,5 @@ Global options (use these before the subcommand, if any):
   -help         Show this help output, or the help for a specified subcommand.
   -version      An alias for the "version" subcommand.
 ```
+
+Note the `fmt` flag - this is usually handy for making the code look readable.
