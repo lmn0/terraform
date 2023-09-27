@@ -20,3 +20,19 @@ resource "oci_core_instance" "ubuntu_instance" {
     } 
     preserve_boot_volume = false
 }
+
+resource "aws_security_group""dynamicsg" {
+    name        = "dynamicsg"
+    description = "Ingress rules"
+
+    dynamic "ingress"{
+        for_each = var.ingress_ports
+        iterator = port
+        content {
+            from_port = port.value
+            to-port  = port.value
+            protocol = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        }
+    }
+}
