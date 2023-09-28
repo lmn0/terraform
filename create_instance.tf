@@ -19,12 +19,22 @@ resource "oci_core_instance" "ubuntu_instance" {
         ssh_authorized_keys = file("/home/tjs/Documents/repo/terraform/public.pem")
     } 
     preserve_boot_volume = false
+
+    tags ={
+        name = "OCI - first instance"
+    }
+
+#Lifecycle uses meta arguments
+    lifecycle{
+        ignore_changes = [tags]
+    }
 }
 
 resource "aws_security_group""dynamicsg" {
     name        = "dynamicsg"
     description = "Ingress rules"
 
+# Dynamic - usage
     dynamic "ingress"{
         for_each = var.ingress_ports
         iterator = port

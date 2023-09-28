@@ -1,5 +1,7 @@
 #Terraform studies
 
+`fmt` flag - this is handy for making the code look readable.
+
 ```
 Terraform command usage:
 Usage: terraform [global options] <subcommand> [args]
@@ -42,4 +44,4 @@ Global options (use these before the subcommand, if any):
   -version      An alias for the "version" subcommand.
 ```
 
-Note the `fmt` flag - this is usually handy for making the code look readable.
+
