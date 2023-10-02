@@ -24,10 +24,17 @@ resource "oci_core_instance" "ubuntu_instance" {
         name = "OCI - first instance"
     }
 
-#Lifecycle uses meta arguments
+#Lifecycle uses meta arguments to define the resource property
+#Lifecycle Meta arguments:
+# 1. create_before_destroy
+# 2. prevent_destroy
+# 3. ignore_changes
+# 4. replace_triggered_by
+
     lifecycle{
         ignore_changes = [tags]
     }
+
 }
 
 resource "aws_security_group""dynamicsg" {
