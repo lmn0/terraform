@@ -28,7 +28,7 @@ resource "oci_core_instance" "ubuntu_instance" {
 #Lifecycle Meta arguments:
 # 1. create_before_destroy
 # 2. prevent_destroy
-# 3. ignore_changes
+# 3. ignore_changes  (=all)
 # 4. replace_triggered_by
 
     lifecycle{
