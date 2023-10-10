@@ -1,5 +1,7 @@
 #Terraform studies
 
+This is a simple workspace which I am using for studying Terraform platform automation
+
 `fmt` flag - this is handy for making the code look readable.
 
 ```
