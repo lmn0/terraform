@@ -4,6 +4,8 @@ module "ocistd_vm"{
     source = "./modules/ocivms"
 }
 
+# Many modules are available at https://registry.terraform.io/ - look for the verified ones to get authentic modules
+
 # First OCI instance
 resource "oci_core_instance" "ubuntu_instance" {
     # Required
