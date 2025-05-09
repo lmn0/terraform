@@ -46,4 +46,7 @@ Global options (use these before the subcommand, if any):
   -version      An alias for the "version" subcommand.
 ```
 
+Terraform works by creating an execution plan by first creating an execution plan that compares the deried infrastructure state (defined in config file) with the current state of the infrastructure. The plan outlines the necessary changes - creates, updates, deletes to reach the desired state. Then optionally review and approve the plan before Terraform applies it. 
+
+It makes use of a state file to store the current configuration of the infrastructure.
 
