@@ -50,3 +50,6 @@ Terraform works by creating an execution plan by first creating an execution pla
 
 It makes use of a state file to store the current configuration of the infrastructure.
 
+You can use the terraform plan command to review the execution plan before applying it. This allows you to check for unintended changes and ensure that the plan aligns with your expectations. 
+
+If you're satisfied with the plan, you can use the terraform apply command to execute it and make the changes to your infrastructure. Terraform will then interact with the infrastructure providers (e.g., AWS, Azure, Google Cloud) through their APIs to provision, update, or destroy resources. 
