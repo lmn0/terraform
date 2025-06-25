@@ -18,7 +18,7 @@ resource "aws_instance" "jenkins_ec2" {
   key_name                    = "JenkinsKeyPair"
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.jenkins_security_group.id]
-  user_data                   = file("/home/tjskrishna/Documents/systems/cicd/install_jenkins.sh")
+  user_data                   = file("install_jenkins.sh")
 
   tags = {
     Name = "Jenkins-Server"
