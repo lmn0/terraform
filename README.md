@@ -2,6 +2,9 @@
 
 This is a simple workspace that contains Terraform platform automation scripts for DevOps/SRE tasks.
 
+AWS folder contains TF scripts to create a fresh instance of Jenkins on EC2, configure security groups, VPC and set up S3 bucket automatically.
+OCI folder contains TF scripts to create OCI instances and perform some functions such as for loops, and usage of variables etc.
+
 `fmt` flag - this is handy for making the code look readable.
 
 ```
