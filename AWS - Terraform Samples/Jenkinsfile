@@ -1,0 +1,61 @@
+pipeline {
+    agent any // Or a specific agent, e.g., agent { docker { image 'golang:1.22' } }
+
+    options {
+        // Discard old builds to save space
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
+    triggers {
+        // Trigger the pipeline on pull request events
+        githubPullRequest() // Requires GitHub Pull Request Builder plugin
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Set up Go Environment') {
+            steps {
+                script {
+                    // Set GOPATH and add Go binaries to PATH within the workspace
+                    env.GOPATH = "${workspace}"
+                    env.PATH = "${env.GOPATH}/bin:${env.PATH}"
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'go mod tidy' // Ensure dependencies are in sync
+                sh 'go build -v ./...' // Build the Go application
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'go test -v ./...' // Run Go tests
+            }
+        }
+
+        // Optional: Add more stages for linting, security scanning, etc.
+    }
+
+    post {
+        always {
+            // Clean up workspace after each build
+            cleanWs()
+        }
+        failure {
+            // Optionally, add steps to report build failures to GitHub or other platforms
+            echo "Build failed for Pull Request: ${env.CHANGE_ID}"
+        }
+        success {
+            // Optionally, add steps to report build success to GitHub
+            echo "Build succeeded for Pull Request: ${env.CHANGE_ID}"
+        }
+    }
+}
